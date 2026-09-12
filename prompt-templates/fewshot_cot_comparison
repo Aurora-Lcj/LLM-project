@@ -1,1 +1,31 @@
+三种策略：1、Few-shot：少样本提示（给定1~5个样本让模型根据样本做出回答）：可以让模型根据你所给出的示例回答给出你想要的结果，适合输出具有个人特点的回答 \
+         2、Zero-shot：零样本提示（不给定样本示例，让模型根据训练集回答）：只是根据训练集来回答问题，适合输出要求客观的答案\
+         3、CoT:思维链（模型一步步写出推理过程，最后得出结果）：模型会根据给定的条件一步步推演，最终得出结果，适合数学、逻辑推理类的问题 \
+对于文本总结类的prompt写法：\
+prompt="""\
+          大要求（一个模糊的任务要求）：给定所要完成的任务#您的任务是从电子商务网站上生成一个产品评论的简短摘要。
+          小要求（任务要求中所需要的具体细节）：对于具体详细要求的补充#请对三个反引号之间的评论文本进行概括，最多30个词汇，并且聚焦在产品价格和质量上。\
+          Review:'''{text}'''\
+"""
+例如：text = """
+Got this panda plush toy for my daughter's birthday, \
+who loves it and takes it everywhere. It's soft and \ 
+super cute, and its face has a friendly look. It's \ 
+a bit small for what I paid though. I think there \ 
+might be other options that are bigger for the \ 
+same price. It arrived a day earlier than expected, \ 
+so I got to play with it myself before I gave it \ 
+to her.
+"""#示例文本
 
+prompt = f"""
+Your task is to generate a short summary of a product \
+review from an ecommerce site. #总体任务
+
+Summarize the review below, delimited by triple 
+backticks, in at most 30 words. #总体任务的详细要求
+
+Review: ```{prod_review}```
+"""
+response = get_completion(prompt)
+print(response)#示例输出的prompt
