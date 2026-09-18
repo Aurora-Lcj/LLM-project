@@ -18,7 +18,7 @@ might be other options that are bigger for the \
 same price. It arrived a day earlier than expected, \ 
 so I got to play with it myself before I gave it \ 
 to her.
-"""
+"""\
 
 #text中文版\
 text = """\
