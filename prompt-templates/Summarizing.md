@@ -17,7 +17,7 @@ a bit small for what I paid though. I think there \
 might be other options that are bigger for the \ 
 same price. It arrived a day earlier than expected, \ 
 so I got to play with it myself before I gave it \ 
-to her.
+to her.\
 """\
 
 #text中文版\
@@ -26,7 +26,7 @@ text = """\
 公仔很软，超级可爱，面部表情也很和善。但是相比于价钱来说，
 它有点小，我感觉在别的地方用同样的价钱能买到更大的。
 快递比预期提前了一天到货，所以在送给女儿之前，我自己玩了会。
-"""
+"""\
 
 
 #示例prompt\
@@ -34,7 +34,7 @@ prompt = f"""
 您的任务是从电子商务网站上生成一个产品评论的简短摘要。#总体任务\
 请对三个反引号之间的评论文本进行概括，最多30个词汇，并且聚焦在产品价格和质量上。#具体要求，如字数限制、总结侧重点\
 文本: ```{text}```\
-"""
+"""\
 response = get_completion(prompt)\
 print(response)\
 
@@ -42,21 +42,21 @@ print(response)\
 #可通过for循环进行多文本总结\
 
 text_1="""\
-          #文本内容
+          #文本内容\
 """\
 text_2="""\
-          #文本内容
+          #文本内容\
 """\
 text_3="""\
-          #文本内容
+          #文本内容\
 """\
 texts=[text,text_1,text_2,text_3]\
-for i in range(len(texts)):
+for i in range(len(texts)):\
   prompt="""\
             #总体任务\
             #具体要求\
             ```{texts[i]}```\
-  """
+  """\
   response = get_completion(prompt)\
   print(i,response,"\n")\
   
@@ -92,7 +92,7 @@ replacements heads are pretty expensive, but you can \
 get generic ones that're more reasonably priced. This \
 toothbrush makes me feel like I've been to the dentist \
 every day. My teeth feel sparkly clean!\
-"""
+"""\
 # review for a blender\
 text_3 = """\
 So, they still had the 17 piece system on seasonal \
@@ -125,7 +125,7 @@ quality has gone done in these types of products, so \
 they are kind of counting on brand recognition and \
 consumer loyalty to maintain sales. Got it in about \
 two days.\
-"""
+"""\
 texts = [text,text_1,text_2,text_3]\
 
 #中文版\
@@ -136,7 +136,7 @@ text_1 = """\
 很好，发来了一条新的。新的拉链也在几天内就到了。这个灯非常容易装配。后来，我\
 发现缺少一个部分，所以我联系了他们的客户支持，他们很快就给我寄来了缺失的部件\
 ！我觉得这是一家非常关心他们的客户和产品的好公司。\
-"""
+"""\
 # review for an electric toothbrush\
 text_2 = """\
 我的牙科卫生师推荐我使用电动牙刷，这就是我购买这款牙刷的原因。目前为止，我发现电池的\
@@ -146,7 +146,7 @@ text_2 = """\
 地清洁牙齿间缝，因为现有的无法做到这一点。总的来说，如果你能以大约50美元的价格购入这款电动\
 牙刷，那它就物超所值。厂家配套的替换刷头价格相当昂贵，但你可以买到价格更为合理的通用款。\
 使用这款牙刷让我感觉像每天都去看了牙医一样，我的牙齿感觉洁净如新！\
-"""
+"""\
 # review for a blender\
 text_3 = """\
 他们还在11月把17件套系统以大约$49的优惠价格销售，几乎是五折。但不明原因（轻易就可以归咎为价格欺诈）\
@@ -169,8 +169,8 @@ for i in range(len(texts)):\
     Summarize the review below, delimited by triple \
     backticks in at most 20 words. \
 
-    Review: ```{texts[i]}```
-    """
-    response = get_completion(prompt)
+    Review: ```{texts[i]}```\
+    """\
+    response = get_completion(prompt)\
     print(i, response, "\n")
   
